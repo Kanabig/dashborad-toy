@@ -1,7 +1,7 @@
 import db.config as config
 
 bankAccountDb = {
-    config.BANK_ACNT: {
+    "XXX-YY-ZZZZZZ": {
         config.BANK_ACNT: "XXX-YY-ZZZZZZ",
         config.BANK_PW: "123",
         config.BANK_LOG: [
