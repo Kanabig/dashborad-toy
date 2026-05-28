@@ -69,13 +69,14 @@ def addMoney():
             print('입금 중입니다.')
             accountBalance += plus
             now = datetime.datetime.now().strftime('%Y-%m-%d %H-%M-%S')
-            backAccountDb.bankAccountDb[config.BANK_ACNT][config.BANK_LOG].append(
+            backAccountDb.bankAccountDb[config.BANK_ACNT][config.BANK_ACNT][config.BANK_LOG].append(
                 (now, plus, '입금')
             )
             print(f'입금 완료, 현재 잔액: {accountBalance:,}원')
 
     except ValueError:
         print('[금액만] 다시 입력하세요.')
+        return
 
 
 def subMoney():
@@ -88,24 +89,25 @@ def subMoney():
         
         elif minus > accountBalance:
             print('출금 금액이 계좌 잔액보다 많습니다.')
-            return minus
+            return
             
         elif minus <= accountBalance:
             print('출금 중입니다.')
             accountBalance -= minus
             now = datetime.datetime.now().strftime('%Y-%m-%d %H-%M-%S')
-            backAccountDb.bankAccountDb[config.BANK_ACNT][config.BANK_LOG].append(
+            backAccountDb.bankAccountDb[config.BANK_ACNT][config.BANK_ACNT][config.BANK_LOG].append(
                 (now, minus, '출금')
             )
             print(f'출금 완료, 현재 잔액: {accountBalance:,}원')
 
     except ValueError:
         print('[금액만] 다시 입력하세요.')
+        return 
 
 
 def moneyFlow():
     global accountBalance
-    myMoneyFlow = backAccountDb.bankAccountDb[config.BANK_ACNT][config.BANK_LOG]
+    myMoneyFlow = backAccountDb.bankAccountDb[config.BANK_ACNT][config.BANK_ACNT][config.BANK_LOG]
     deepcopieFlow = copy.deepcopy(myMoneyFlow)
     deepcopieFlow.reverse()
     now = datetime.datetime.now().strftime('%Y-%m-%d %H-%M-%S')
@@ -123,9 +125,11 @@ def moneyFlow():
 def saveJson():
     now = datetime.datetime.now().strftime('%Y-%m-%d %H-%M-%S')
     fileName = f'{now}_balance_data.json'
+    history = backAccountDb.bankAccountDb[config.BANK_ACNT][config.BANK_ACNT][config.BANK_LOG]
     save_data = {
         "account_number": config.BANK_ACNT,
-        "current_balance": accountBalance
+        "current_balance": accountBalance,
+        "transaction_history": history
         }
 
     with open(fileName, 'w', encoding='utf8') as f:
@@ -158,4 +162,5 @@ def setMoneyFlow():
 
         except ValueError:
             print('[올바른] 메뉴를 선택하세요.')
+            return
 
