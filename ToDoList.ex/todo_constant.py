@@ -10,4 +10,6 @@ EXIT    = 99
 
 UPDATE  = 1
 
-DELETE  = 2
+CHANGE  = 2
+
+DELETE  = 3

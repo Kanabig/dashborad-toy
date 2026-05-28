@@ -84,7 +84,7 @@ def choiceToDoList():
                     print('--------------------------------------------------')    
 
                     
-                changeInfo = int(input('1.체크리스트 완료       2.체크리스트 삭제           99.종료'))
+                changeInfo = int(input('1.체크리스트 완료       2.체크리스트 수정       3.체크리스트 삭제           99.종료'))
             
                 if changeInfo == tc.UPDATE:
 
@@ -104,7 +104,23 @@ def choiceToDoList():
                             print('없는 번호입니다 다시 입력해 주세요')
                             continue
                 
-                if changeInfo == tc.DELETE:
+                elif changeInfo == tc.CHANGE:
+                        checkChangeNum = int(input('수정할 체크리스트의 번호를 입력하세요: '))
+
+                        if 1 <= checkChangeNum <= len(todoListDb['ID']):
+
+                            targetIdx = checkChangeNum - 1
+                            
+                            changeChecklist = input('수정 할 체크리스트의 내용을 입력하세요: ')
+                            todoListDb['ID'][targetIdx][config.TODO_TEXT] = changeChecklist
+                            
+                            print(f'{checkChangeNum}번 체크리스트 내용이 "{changeChecklist}"(으)로 수정되었습니다!')
+                            continue
+                
+                
+                
+                
+                elif changeInfo == tc.DELETE:
                         checkChangeNum = int(input('삭제할 할 일의 번호를 입력하세요: '))
 
                         if 1 <= checkChangeNum <= len(todoListDb['ID']):
@@ -117,6 +133,13 @@ def choiceToDoList():
                         else:
                             print('없는 번호입니다 다시 입력해 주세요')
                             continue
+
+
+
+                elif changeInfo == tc.EXIT:
+                    print('프로그램이 종료됩니다')
+                    break
+
 
                 
             
