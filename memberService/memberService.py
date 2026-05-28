@@ -1,4 +1,4 @@
-from db_ver2 import dbManager
+from db import dbManager
 from memberService import session
 
 

@@ -1,5 +1,6 @@
 from memberService import session
 from memberService import memberService
+from db import fileManager
 
 # import memo
 
@@ -18,6 +19,7 @@ onRunning = True
 def exit():
     global onRunning
     onRunning = False
+    fileManager.dbSaveAllAtFile()
 
 
 def notImplemented():
@@ -111,6 +113,6 @@ def main():
 
 
 if __name__ == "__main__":
-    from db_ver2 import fileManager
+    from db import fileManager
 
     main()

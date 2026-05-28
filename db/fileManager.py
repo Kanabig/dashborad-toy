@@ -8,8 +8,8 @@ if __name__ == "__main__":
     project_root = os.path.dirname(current_dir)
     sys.path.append(project_root)
 
-from db_ver2 import dbManager
-from db_ver2 import configs
+from db import dbManager
+from db import config
 
 RESOURCE_PATH = f"{os.getcwd()}\\resources"
 PATH_MEMBER = f"{RESOURCE_PATH}\\member.json"
@@ -23,19 +23,10 @@ def saveAtFile(path, data):
         json.dump(data, file, indent=4, ensure_ascii=False)
 
 
-def saveMemberAccount():
+def dbSaveAllAtFile():
     saveAtFile(PATH_MEMBER, dbManager.members)
-
-
-def saveBankAccount():
     saveAtFile(PATH_BANK, dbManager.bankAccounts)
-
-
-def saveMemo():
     saveAtFile(PATH_MEMO, dbManager.memos)
-
-
-def saveTodoList():
     saveAtFile(PATH_TODO, dbManager.todoLists)
 
 
@@ -47,14 +38,14 @@ def loadFromFile(path, hook=None):
 
 def restoreBankLog(dct):
     # json에 데이터를 저장할 때 튜플->리스트가 되므로 로드할 때 리스트를 튜플로 바꿔줌
-    if configs.BANK_LOG in dct:
-        for idx, item in enumerate(dct[configs.BANK_LOG]):
-            dct[configs.BANK_LOG][idx] = tuple(item)
+    if config.BANK_LOG in dct:
+        for idx, item in enumerate(dct[config.BANK_LOG]):
+            dct[config.BANK_LOG][idx] = tuple(item)
 
     return dct
 
 
-def dbLoadFromFile():
+def dbLoadAllFromFile():
     dbManager.members = loadFromFile(PATH_MEMBER)
     dbManager.bankAccounts = loadFromFile(PATH_BANK, restoreBankLog)
     dbManager.memos = loadFromFile(PATH_MEMO)
@@ -72,21 +63,15 @@ if __name__ == "__main__":
         printInfo(dbManager.memos)
         printInfo(dbManager.todoLists)
 
-    def testCode():
-        printAll()
-        saveBankAccount()
-        saveMemberAccount()
-        saveMemo()
-        saveTodoList()
+    printAll()
+    dbSaveAllAtFile()
 
-        print("=" * 200)
+    print("=" * 200)
 
-        dbManager.members = None
-        dbManager.bankAccounts = None
-        dbManager.memos = None
-        dbManager.todoLists = None
+    dbManager.members = None
+    dbManager.bankAccounts = None
+    dbManager.memos = None
+    dbManager.todoLists = None
 
-        dbLoadFromFile()
-        printAll()
-
-    testCode()
+    dbLoadAllFromFile()
+    printAll()
