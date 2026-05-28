@@ -1,4 +1,5 @@
 import session
+from db import fileManager
 
 OPT_EXIT = "0"
 OPT_SIGN_UP = "1"
@@ -45,13 +46,15 @@ signOutActions = {
     OPT_SIGN_IN: None,
 }
 
+fileManager.startCaching()
+
 
 def main():
     while onRunning:
-        display(session.isSignIned())
+        display(session.onSignIned())
         selected = input(": ")
 
-        if session.isSignIned():
+        if session.onSignIned():
             action = signInActions.get(selected)
             action() if action else None
 
