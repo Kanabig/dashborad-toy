@@ -1,4 +1,5 @@
 signinedId = ""
 
-def isSignIned():
+
+def onSignIned():
     return True if signinedId else False
