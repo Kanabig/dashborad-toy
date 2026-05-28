@@ -2,6 +2,7 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
+import session
 import datetime
 import copy
 import json
@@ -18,7 +19,7 @@ accountBalance = 0
 
 
 def startLoop():
-    if sign_in == True:
+    if session.onSignIned:
         if config.BANK_ACNT:
             setMoneyFlow()
 
