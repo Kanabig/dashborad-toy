@@ -1,4 +1,4 @@
-import config
+import db.config as config
 
 memberAccountDb = {
     config.ID: {

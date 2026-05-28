@@ -46,18 +46,22 @@ signOutActions = {
 }
 
 
-while onRunning:
-    display(session.isSignIned())
-    selected = input(": ")
+def main():
+    while onRunning:
+        display(session.isSignIned())
+        selected = input(": ")
 
-    if session.isSignIned():
-        action = signInActions.get(selected)
-        action() if action else None
+        if session.isSignIned():
+            action = signInActions.get(selected)
+            action() if action else None
 
-    else:
-        action = signOutActions.get(selected)
-        action() if action else None
+        else:
+            action = signOutActions.get(selected)
+            action() if action else None
 
+
+if __name__ == "__main__":
+    main()
 
 """
 로그인 아닌 상태

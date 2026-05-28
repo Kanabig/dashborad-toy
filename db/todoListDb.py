@@ -1,5 +1,4 @@
-import config
-import datetime
+import db.config as config
 
 todoListDb = {
     config.ID: [
