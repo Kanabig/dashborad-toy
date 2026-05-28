@@ -1,11 +1,6 @@
 import db.config as config
 
 todoListDb = {
-<<<<<<< HEAD
-    config.ID: [
-       
-    ]
-=======
     "minsoo": [
         {
             config.TODO_TEXT: "파이썬 알고리즘 2문제 풀기",
@@ -96,5 +91,4 @@ todoListDb = {
             config.SUCCESS: True,
         }
     ],
->>>>>>> 5c457d09a829a8c99ea30674ee8555d026b7c37d
 }
