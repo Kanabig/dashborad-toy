@@ -21,8 +21,12 @@ def writeMemoUI():    # 메모 작성 창을 띄우기 위한 함수
 
         if text:    # 입력한 내용이 있을때만 저장하는 느낌
 
-            id = memo.session.loginId   # 현재 아이디
-            
+            if not memo.session.signinedId:
+                print("로그인 후 이용하세요.")
+                return
+
+            id = memo.session.signinedId
+
             # 딕셔너리
             memoData = {
                 memo.config.MEMO_DATE:

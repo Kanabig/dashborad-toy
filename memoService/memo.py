@@ -132,7 +132,7 @@ def memoLoop():
 
         if menu == "1":
             writeMemo()
-            #memoUI.writeMemoUI()   ###UI 버전 재미용
+            # memoUI.writeMemoUI()   ###UI 버전 재미용
 
         elif menu == "2":
             readMemo()
