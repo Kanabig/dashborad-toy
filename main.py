@@ -67,7 +67,7 @@ def makePromptAndActions(onSignedIn):
 
 
 def main():
-    # fileManager.dbLoadFromFile()
+    fileManager.dbLoadAllFromFile()
 
     while onRunning:
         prompt, actions = makePromptAndActions(session.onSignIned())
@@ -75,6 +75,8 @@ def main():
 
         action = actions.get(selected)
         action() if action else None
+
+    fileManager.dbSaveAllAtFile()
 
 
 if __name__ == "__main__":
