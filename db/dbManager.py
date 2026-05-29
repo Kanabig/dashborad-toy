@@ -62,6 +62,8 @@ def updateMemo(id, num, newText):
 
 def deleteMemo(id, num):
     del memos[id][num]
+
+    
 # ------ todolist ------
 def createTodo(workNote, finishDay):
     now = datetime.datetime.now()
