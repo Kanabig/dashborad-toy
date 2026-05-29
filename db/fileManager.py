@@ -27,6 +27,7 @@ def dbSaveAllAtFile():
     saveAtFile(PATH_MEMBER, dbManager.members)
     saveAtFile(PATH_BANK, dbManager.bankAccounts)
     saveAtFile(PATH_MEMO, dbManager.memos)
+    print(dbManager.todoLists)
     saveAtFile(PATH_TODO, dbManager.todoLists)
 
 
@@ -63,8 +64,8 @@ def dbLoadAllFromFile():
 #         printInfo(dbManager.memos)
 #         printInfo(dbManager.todoLists)
 
+#     dbLoadAllFromFile()
 #     printAll()
-#     dbSaveAllAtFile()
 
 #     print("=" * 200)
 
@@ -73,5 +74,5 @@ def dbLoadAllFromFile():
 #     dbManager.memos = None
 #     dbManager.todoLists = None
 
-#     dbLoadAllFromFile()
+#     # dbSaveAllAtFile()
 #     printAll()

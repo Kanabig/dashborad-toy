@@ -19,5 +19,12 @@
         "MAIL": "suhyun.park@daum.net",
         "PHONE": "010-3456-7890",
         "BANK_ACNT": "101-77-suhyun"
+    },
+    "jungho": {
+        "ID": "jungho",
+        "PW": "1",
+        "MAIL": "1",
+        "PHONE": "1",
+        "BANK_ACNT": "1"
     }
 }

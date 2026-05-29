@@ -4,7 +4,7 @@ from db.memoDb import memoDb as memos
 from db.todoListDb import todoListDb as todoLists
 from db import config
 
-from datetime import datetime
+import datetime
 
 
 # ------ member ------
@@ -51,21 +51,21 @@ def hasMemo(id):
     return id in memos and len(memos[id]) > 0
 
 def createMemo(id, text):
-    time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     memo = {config.MEMO_DATE: time, config.MEMO_TEXT: text}
 
     memos[id].append(memo)
 
 def updateMemo(id, num, newText):
     memos[id][num][config.MEMO_TEXT] = newText
-    memos[id][num][config.MEMO_DATE] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    memos[id][num][config.MEMO_DATE] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 def deleteMemo(id, num):
     del memos[id][num]
 
     
 # ------ todolist ------
-def createTodo(workNote, finishDay):
+def createTodo(id, workNote, finishDay):
     now = datetime.datetime.now()
     expired_time = now + datetime.timedelta(days=finishDay)
 
@@ -77,4 +77,4 @@ def createTodo(workNote, finishDay):
         config.SUCCESS: False,
     }
 
-    todoLists["ID"].append(inforMationBox)
+    todoLists[id].append(inforMationBox)

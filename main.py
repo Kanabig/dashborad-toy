@@ -77,8 +77,7 @@ def main():
         action() if action else None
 
     fileManager.dbSaveAllAtFile()
-
-
+    
 if __name__ == "__main__":
     from db import fileManager
 

@@ -6,7 +6,7 @@ import datetime
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 from ToDoList import todo_constant as tc
-from db.todoListDb import todoListDb
+from db import dbManager
 from db import config
 from memberService import session
 
@@ -16,7 +16,6 @@ from memberService import session
 def create_todo():
     workNote = input('체크리스트를 작성하세요: ')
     now = datetime.datetime.now()
-    
     
     inputFinishDay = input('마감일까지 남은 일수를 입력하세요 (최대 30일): ')
     if inputFinishDay.isdigit():
@@ -29,28 +28,30 @@ def create_todo():
         print('0일 이상 30일 이하로 입력하세요. 처음으로 돌아갑니다.')
         return
         
-    expired_time = now + datetime.timedelta(days=inputFinishDay)
+    dbManager.createTodo(session.signinedId, workNote, inputFinishDay)
 
-    id = session.signinedId
+    # expired_time = now + datetime.timedelta(days=inputFinishDay)
+    # id = session.signinedId
 
-    if id not in todoListDb:
-        todoListDb[id] = []  # session.signinedId 키가 없으면 빈 리스트를 새로 만들어라!
+    # if id not in todoListDb:
+    #     todoListDb[id] = []  # session.signinedId 키가 없으면 빈 리스트를 새로 만들어라!
 
-    inforMationBox = {
-        config.TODO_TEXT: workNote,
-        config.REGISTER_DAY: now.strftime('%Y-%m-%d %H:%M:%S'),
-        config.EXPIRED_DAY: expired_time.strftime('%Y-%m-%d %H:%M:%S'),
-        config.REMAINING: str(inputFinishDay),
-        config.SUCCESS: False
-    }
+    # inforMationBox = {
+    #     config.TODO_TEXT: workNote,
+    #     config.REGISTER_DAY: now.strftime('%Y-%m-%d %H:%M:%S'),
+    #     config.EXPIRED_DAY: expired_time.strftime('%Y-%m-%d %H:%M:%S'),
+    #     config.REMAINING: str(inputFinishDay),
+    #     config.SUCCESS: False
+    # }
 
-    todoListDb[id].append(inforMationBox)
 
-    print("\n새로운 체크리스트가 성공적으로 등록되었습니다!")
-    print(f" 할 일: {inforMationBox[config.TODO_TEXT]}")
-    print(f" 등록일: {inforMationBox[config.REGISTER_DAY]}")
-    print(f" 마감일: {inforMationBox[config.EXPIRED_DAY]}")
-    print('-' * 50)
+    # todoListDb[id].append(inforMationBox)
+
+    # print("\n새로운 체크리스트가 성공적으로 등록되었습니다!")
+    # # print(f" 할 일: {inforMationBox[config.TODO_TEXT]}")
+    # # print(f" 등록일: {inforMationBox[config.REGISTER_DAY]}")
+    # # print(f" 마감일: {inforMationBox[config.EXPIRED_DAY]}")
+    # print('-' * 50)
 
 
 # ----------------------------------------------------
@@ -61,12 +62,12 @@ def read_todo_list():
     print('----[나의 체크리스트 목록 조회]----')
     print('-' * 20)
 
-    if not todoListDb[session.signinedId]:
+    if session.signinedId not in dbManager.todoLists:
         print('등록된 체크리스트가 없습니다! 먼저 등록하세요!')
-        return False  # 목록이 비어있음을 알림
+        return False
     
     now = datetime.datetime.now()
-    for idx, todo in enumerate(todoListDb[session.signinedId], start=1):
+    for idx, todo in enumerate(dbManager.todoLists[session.signinedId], start=1):
         # 완료 여부 표시
         status = '완료!' if todo[config.SUCCESS] else '미완료'
         
@@ -93,9 +94,9 @@ def update_todo_status():
         print('숫자만 입력 가능합니다. 처음으로 돌아갑니다.')
         return
         
-    if 1 <= checkChangeNum <= len(todoListDb[session.signinedId]):
+    if 1 <= checkChangeNum <= len(dbManager.todoLists[session.signinedId]):
         targetIdx = checkChangeNum - 1
-        todoListDb[session.signinedId][targetIdx][config.SUCCESS] = True
+        dbManager.todoLists[session.signinedId][targetIdx][config.SUCCESS] = True
         print(f'{checkChangeNum}번 체크리스트가 "완료!" 상태로 변경되었습니다.')
     else:
         print('존재하지 않는 번호입니다.')
@@ -113,10 +114,10 @@ def change_todo_text():
         return
 
 
-    if 1 <= checkChangeNum <= len(todoListDb[session.signinedId]):
+    if 1 <= checkChangeNum <= len(dbManager.todoLists[session.signinedId]):
         targetIdx = checkChangeNum - 1
         changeChecklist = input('수정할 체크리스트의 새 내용을 입력하세요: ')
-        todoListDb[session.signinedId][targetIdx][config.TODO_TEXT] = changeChecklist
+        dbManager.todoLists[session.signinedId][targetIdx][config.TODO_TEXT] = changeChecklist
         print(f'{checkChangeNum}번 체크리스트 내용이 "{changeChecklist}"(으)로 수정되었습니다!')
     else:
         print('존재하지 않는 번호입니다.')
@@ -133,9 +134,9 @@ def delete_todo():
         print('숫자만 입력 가능합니다. 처음으로 돌아갑니다.')
         return
 
-    if 1 <= checkChangeNum <= len(todoListDb[session.signinedId]):
+    if 1 <= checkChangeNum <= len(dbManager.todoLists[session.signinedId]):
         targetIdx = checkChangeNum - 1
-        del todoListDb[session.signinedId][targetIdx]
+        del dbManager.todoLists[session.signinedId][targetIdx]
         print('삭제 완료!')
     else:
         print('존재하지 않는 번호입니다.')
@@ -186,5 +187,5 @@ def startLoop():
             print('올바른 메뉴 번호를 선택해주세요.')
 
 if __name__ == '__main__':
-    session.signinedId = "minsoo"
+    # session.signinedId = "minsoo"
     startLoop()
