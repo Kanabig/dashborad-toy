@@ -52,26 +52,26 @@ def dbLoadAllFromFile():
     dbManager.todoLists = loadFromFile(PATH_TODO)
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    def printInfo(dct):
-        print(dct)
+#     def printInfo(dct):
+#         print(dct)
 
-    def printAll():
-        printInfo(dbManager.members)
-        printInfo(dbManager.bankAccounts)
-        printInfo(dbManager.memos)
-        printInfo(dbManager.todoLists)
+#     def printAll():
+#         printInfo(dbManager.members)
+#         printInfo(dbManager.bankAccounts)
+#         printInfo(dbManager.memos)
+#         printInfo(dbManager.todoLists)
 
-    printAll()
-    dbSaveAllAtFile()
+#     printAll()
+#     dbSaveAllAtFile()
 
-    print("=" * 200)
+#     print("=" * 200)
 
-    dbManager.members = None
-    dbManager.bankAccounts = None
-    dbManager.memos = None
-    dbManager.todoLists = None
+#     dbManager.members = None
+#     dbManager.bankAccounts = None
+#     dbManager.memos = None
+#     dbManager.todoLists = None
 
-    dbLoadAllFromFile()
-    printAll()
+#     dbLoadAllFromFile()
+#     printAll()
