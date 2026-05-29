@@ -1,5 +1,6 @@
 from db import dbManager
 from memberService import session
+from bankAccount import bankAccount
 
 
 def isExistsId(id):
@@ -22,10 +23,11 @@ def signUp():
     pw = input("패스워드: ")
     mail = input("이메일: ")
     phone = input("전화번호: ")
-    bankAcnt = input("계좌번호: ")
+
+    dbManager.createMember(id, pw, mail, phone)
+    bankAcnt = bankAccount.setBankAccount(id)
 
     print("회원가입에 성공했습니다.")
-    dbManager.createMember(id, pw, mail, phone, bankAcnt)
 
 
 def signIn():

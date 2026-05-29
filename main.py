@@ -1,5 +1,6 @@
 from memberService import session
 from memberService import memberService
+from bankAccount import bankAccount
 from memoService import memo
 from ToDoList import todolist
 from db import fileManager
@@ -29,7 +30,7 @@ def notImplemented():
 signInedActions = {
     OPT_SIGN_OUT: memberService.signOut,
     OPT_MODIFY: notImplemented,
-    OPT_BANK: notImplemented,
+    OPT_BANK: bankAccount.startLoop,
     OPT_MEMO: memo.memoLoop,
     OPT_TODO: todolist.startLoop,
 }

@@ -8,13 +8,13 @@ import datetime
 
 
 # ------ member ------
-def createMember(id, pw, mail, phone, bankAcnt):
+def createMember(id, pw, mail, phone):
     members[id] = {
         config.ID: id,
         config.PW: pw,
         config.MAIL: mail,
         config.PHONE: phone,
-        config.BANK_ACNT: bankAcnt,
+        config.BANK_ACNT: None,
     }
 
     memos[id] = []
@@ -35,11 +35,27 @@ def getMemberBankAcnt(id):
 
 
 def createBankAccount(id, pw):
-    bankAccounts[getMemberBankAcnt()] = {
-        config.BANK_ACNT: f"101-77-{id}",
+    if id not in members:
+        print(f'회원 없음: {id}')
+        return
+    
+    accountCode = f"101-77-{id}"
+
+    bankAccounts[accountCode] = {
         config.BANK_PW: pw,
         config.BANK_LOG: [],
     }
+
+    members[id][config.BANK_ACNT] = accountCode
+
+
+def createdFlowHistory(id, inputMoney, kind):
+    if members[id][config.BANK_ACNT] not in bankAccounts:
+        return
+    
+    time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    history = (time, inputMoney, kind)
+    bankAccounts[members[id][config.BANK_ACNT]][config.BANK_LOG].append(history)
 
 
 # ------ memo ------
