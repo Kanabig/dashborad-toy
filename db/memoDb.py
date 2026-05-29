@@ -1,10 +1,10 @@
 from db import config
 
 memoDb = {
-    "janghyunwoo": [
+    "minsoo": [
         {
             config.MEMO_DATE: "2026-05-28 09:10:21",
-            config.MEMO_TEXT: "길동이에게 10,000원 보냄"
+            config.MEMO_TEXT: "지원에게 10,000원 보냄"
         },
         {
             config.MEMO_DATE: "2026-05-28 10:15:33",
@@ -12,7 +12,7 @@ memoDb = {
         }
     ],
 
-    "hanjiyoon": [
+    "jiwon": [
         {
             config.MEMO_DATE: "2026-05-28 11:30:55",
             config.MEMO_TEXT: "아이스크림 먹고싶다"
@@ -23,10 +23,10 @@ memoDb = {
         }
     ],
 
-    "leeseojun": [
+    "suhyun": [
         {
             config.MEMO_DATE: "2026-05-28 15:20:01",
-            config.MEMO_TEXT: "길동이에게 빌려준 돈 30만원"
+            config.MEMO_TEXT: "민수에게 빌려준 돈 30만원"
         }
     ]
 }

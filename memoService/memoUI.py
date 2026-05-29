@@ -1,7 +1,7 @@
 # 그냥 해보고 싶어서 만든 UI 사용은  memo_ui.writeMemoUI()
 
 import tkinter as tk  # 파이썬에 창,버튼,입력칸에 쓰이는 기본틀
-import memo           # 메모에 적용하기 위해서
+from memoService import memo          # 메모에 적용하기 위해서
 
 
 def writeMemoUI():    # 메모 작성 창을 띄우기 위한 함수
