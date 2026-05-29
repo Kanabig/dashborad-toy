@@ -27,7 +27,6 @@ def dbSaveAllAtFile():
     saveAtFile(PATH_MEMBER, dbManager.members)
     saveAtFile(PATH_BANK, dbManager.bankAccounts)
     saveAtFile(PATH_MEMO, dbManager.memos)
-    print(dbManager.todoLists)
     saveAtFile(PATH_TODO, dbManager.todoLists)
 
 

@@ -1,45 +1,21 @@
 {
-    "minsoo": [],
-    "jiwon": [
-        {
-            "TEXT": "영어 회화 20분 섀도잉",
-            "REGISTER": "2026-05-28 07:30:00",
-            "EXPIRED": "2026-05-28 23:59:59",
-            "REMAINING": "0",
-            "SUCCESS": true
-        }
-    ],
-    "suhyun": [
-        {
-            "TEXT": "방 청소 및 분리수거",
-            "REGISTER": "2026-05-26 13:00:00",
-            "EXPIRED": "2026-05-28 13:00:00",
-            "REMAINING": "0",
-            "SUCCESS": true
-        }
-    ],
-    "jungho": [
-        {
-            "TEXT": "asdasd",
-            "REGISTER": "2026-05-29 14:44:45",
-            "EXPIRED": "2026-05-31 14:44:45",
-            "REMAINING": "2",
-            "SUCCESS": false
-        },
-        {
-            "TEXT": "asdasdas",
-            "REGISTER": "2026-05-29 14:44:56",
-            "EXPIRED": "2026-06-04 14:44:56",
-            "REMAINING": "6",
-            "SUCCESS": false
-        },
-        {
-            "TEXT": "asdasd",
-            "REGISTER": "2026-05-29 14:52:01",
-            "EXPIRED": "2026-05-31 14:52:01",
-            "REMAINING": "2",
-            "SUCCESS": false
-        }
-    ],
-    "01": []
+  "minsoo": [],
+  "jiwon": [
+    {
+      "TEXT": "영어 회화 20분 섀도잉",
+      "REGISTER": "2026-05-28 07:30:00",
+      "EXPIRED": "2026-05-28 23:59:59",
+      "REMAINING": "0",
+      "SUCCESS": true
+    }
+  ],
+  "suhyun": [
+    {
+      "TEXT": "방 청소 및 분리수거",
+      "REGISTER": "2026-05-26 13:00:00",
+      "EXPIRED": "2026-05-28 13:00:00",
+      "REMAINING": "0",
+      "SUCCESS": true
+    }
+  ]
 }

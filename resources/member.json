@@ -1,37 +1,23 @@
 {
-    "minsoo": {
-        "ID": "minsoo",
-        "PW": "pass123",
-        "MAIL": "minsoo.kim@gmail.com",
-        "PHONE": "010-1234-5678",
-        "BANK_ACNT": "101-77-minsoo"
-    },
-    "jiwon": {
-        "ID": "jiwon",
-        "PW": "jiwon99!",
-        "MAIL": "jiwon.lee@naver.com",
-        "PHONE": "010-2345-6789",
-        "BANK_ACNT": "101-77-jiwon"
-    },
-    "suhyun": {
-        "ID": "suhyun",
-        "PW": "suhyun88",
-        "MAIL": "suhyun.park@daum.net",
-        "PHONE": "010-3456-7890",
-        "BANK_ACNT": "101-77-suhyun"
-    },
-    "jungho": {
-        "ID": "jungho",
-        "PW": "1",
-        "MAIL": "1",
-        "PHONE": "1",
-        "BANK_ACNT": "1"
-    },
-    "01": {
-        "ID": "01",
-        "PW": "02",
-        "MAIL": "03",
-        "PHONE": "04",
-        "BANK_ACNT": "101-77-01"
-    }
+  "minsoo": {
+    "ID": "minsoo",
+    "PW": "pass123",
+    "MAIL": "minsoo.kim@gmail.com",
+    "PHONE": "010-1234-5678",
+    "BANK_ACNT": "101-77-minsoo"
+  },
+  "jiwon": {
+    "ID": "jiwon",
+    "PW": "jiwon99!",
+    "MAIL": "jiwon.lee@naver.com",
+    "PHONE": "010-2345-6789",
+    "BANK_ACNT": "101-77-jiwon"
+  },
+  "suhyun": {
+    "ID": "suhyun",
+    "PW": "suhyun88",
+    "MAIL": "suhyun.park@daum.net",
+    "PHONE": "010-3456-7890",
+    "BANK_ACNT": "101-77-suhyun"
+  }
 }
