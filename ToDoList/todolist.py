@@ -5,7 +5,7 @@ import datetime
 # 프로젝트 구조에 맞게 경로 설정
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
-import todo_constant as tc
+from ToDoList import todo_constant as tc
 from db.todoListDb import todoListDb
 from db import config
 from memberService import session
@@ -86,10 +86,11 @@ def read_todo_list():
 # [UPDATE] 3. 완료 처리 함수
 # ----------------------------------------------------
 def update_todo_status():
-    try:
-        checkChangeNum = int(input('완료처리할 체크리스트의 번호를 입력하세요: '))
-    except ValueError:
-        print('숫자를 입력해야 합니다.')
+    checkChangeNum = (input('완료처리할 체크리스트의 번호를 입력하세요: '))
+    if checkChangeNum.isdigit():
+        checkChangeNum = int(checkChangeNum)
+    else:
+        print('숫자만 입력 가능합니다. 처음으로 돌아갑니다.')
         return
         
     if 1 <= checkChangeNum <= len(todoListDb[session.signinedId]):
@@ -104,11 +105,13 @@ def update_todo_status():
 # [CHANGE] 4. 할 일 내용 수정 함수
 # ----------------------------------------------------
 def change_todo_text():
-    try:
-        checkChangeNum = int(input('수정할 체크리스트의 번호를 입력하세요: '))
-    except ValueError:
-        print('숫자를 입력해야 합니다.')
+    checkChangeNum = (input('수정할 체크리스트의 번호를 입력하세요: '))
+    if checkChangeNum.isdigit():
+        checkChangeNum = int(checkChangeNum)
+    else:
+        print('숫자만 입력 가능합니다. 처음으로 돌아갑니다.')
         return
+
 
     if 1 <= checkChangeNum <= len(todoListDb[session.signinedId]):
         targetIdx = checkChangeNum - 1
@@ -123,11 +126,11 @@ def change_todo_text():
 # [DELETE] 5. 할 일 삭제 함수
 # ----------------------------------------------------
 def delete_todo():
-    try:
-        checkChangeNum = int(input('삭제할 할 일의 번호를 입력하세요: '))
-        # "12123".isdigit() -> 문자가 숫자로 변경될 수 있으면 True. 없으면 False
-    except ValueError:
-        print('숫자를 입력해야 합니다.')
+    checkChangeNum = (input('삭제할 할 일의 번호를 입력하세요: '))
+    if checkChangeNum.isdigit():
+        checkChangeNum = int(checkChangeNum)
+    else:
+        print('숫자만 입력 가능합니다. 처음으로 돌아갑니다.')
         return
 
     if 1 <= checkChangeNum <= len(todoListDb[session.signinedId]):

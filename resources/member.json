@@ -68,12 +68,5 @@
         "MAIL": "taemin.oh@gmail.com",
         "PHONE": "010-0123-4567",
         "BANK_ACNT": "101-77-taemin"
-    },
-    "1": {
-        "ID": "1",
-        "PW": "1",
-        "MAIL": "1",
-        "PHONE": "1",
-        "BANK_ACNT": "1"
     }
 }

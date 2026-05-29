@@ -1,6 +1,7 @@
 from memberService import session
 from memberService import memberService
 from memoService import memo
+from ToDoList import todolist
 from db import fileManager
 
 OPT_EXIT = "0"
@@ -30,7 +31,7 @@ signInedActions = {
     OPT_MODIFY: notImplemented,
     OPT_BANK: notImplemented,
     OPT_MEMO: memo.memoLoop,
-    OPT_TODO: notImplemented,
+    OPT_TODO: todolist.startLoop,
 }
 
 signOutActions = {
